@@ -7,6 +7,7 @@ Heroku
 To set up the NagBot app to work with Slack we need to create a Slack App for your workspace.
 In your browser navigate to https://api.slack.com/apps . You will be presented with an option to create a new app.
 
+![1_create_new_app](https://user-images.githubusercontent.com/37161577/40457232-c54952f4-5f38-11e8-8965-7e957b3be1d0.png)
 1 Create new app screen shot.
 
 Select the friendly green button and create a new app
