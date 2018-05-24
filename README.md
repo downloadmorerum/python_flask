@@ -12,6 +12,9 @@ John Omer-Cooper
 
 Bandr Talie O Alkhuzaie
 
+## In this guide:
+[NAGBOT](#headers)
+
 # NAGBOT 
 
 Project Nagbot is a Slack bot that hopes to solve the problem of sorting and detecting security events in large volumes of security data and make security alerting more manageable.
