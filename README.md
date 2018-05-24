@@ -7,29 +7,29 @@
 To set up the NagBot app to work with Slack we need to create a Slack App for your workspace.
 In your browser navigate to https://api.slack.com/apps . You will be presented with an option to create a new app.
 
-![1_create_new_app](https://user-images.githubusercontent.com/37161577/40457232-c54952f4-5f38-11e8-8965-7e957b3be1d0.png)
+1
 
 Select the friendly green button and create a new app.
 
 Give the App a name : NagBot and assign it to s Workspace.
 
-![2_app_name_workspace](https://user-images.githubusercontent.com/37161577/40457832-0c58edc8-5f3c-11e8-9cc9-8804181748bb.png)
+2
 
 To enable NagBot to interactively message users of your workspace Slack needs a url to send messages to and a url which define what actions to take. eg escalate an out of cardinality login.
 
 Navigate to the Interactive Components in the left menu list.
 
-![3_menu_list](https://user-images.githubusercontent.com/37161577/40457873-46d0dcfe-5f3c-11e8-9e57-8f71139d40ed.png)
+3
 
 Turn on interactivity, then fill in the **Request URL** and **Options Load URL** fields, with the URL home of your NagBot app followed by `/slack/message_options` in the request URL and `/slack/message_actions` in the Options Load URL field.
 
-![4_turnon_interactivity](https://user-images.githubusercontent.com/37161577/40457895-5d1464a4-5f3c-11e8-8eca-5fb5711d572c.png)
+4
 
 **Don’t forget to save changes.**
 
 To make NagBot appear more like a standard user in your workspace you can set the Bot User details:
 
-![5_botuser](https://user-images.githubusercontent.com/37161577/40457913-730dfafe-5f3c-11e8-92d2-8457b6362bc3.png)
+5
 
 **Don’t forget to save.**
 
@@ -45,7 +45,7 @@ It is important that these tokens remain secret, do not share them.
 To retrieve the **SLACK_BOT_TOKEN** 
 Navigate to OAuth & Permissions in the left hand side menu:
 
-![6_ oauth_token](https://user-images.githubusercontent.com/37161577/40457930-87768e84-5f3c-11e8-8aed-202c10e4ff4c.png)
+6
 
  Copy this to like named environmental variables on the server hosting your NagBot App.
  
@@ -55,7 +55,7 @@ To retrieve the **SLACK_VERIFICATION_TOKEN**
 
 Navigate to Basic Information in the left hand side menu:
 
-![7_verification_token](https://user-images.githubusercontent.com/37161577/40457951-a346e7f8-5f3c-11e8-9821-383fbbc7d1f5.png)
+7
 
  Copy this to like named environmental variables on the server hosting your NagBot App.
  
@@ -66,14 +66,14 @@ Navigate to Basic Information in the left hand side menu:
 Finally we need to create a Slack channel to which suspicious login events can be sent. Only administrative personnel and NagBot need access to this channel.
 Create a channel, using either Slack app or the Slack Web site, in the workspace you wish NagBot to be active click the **+** next to Channels 
 
-![8_addchannel](https://user-images.githubusercontent.com/37161577/40457970-bb8abbaa-5f3c-11e8-816f-138b9679a543.png)
+8
 
 Fill in the displayed fields:
 - change Public to Private if you want escalations to remain private.
 - invite the users and NagBot.
 - then Create Channel.
 
-![9_escalatechannel](https://user-images.githubusercontent.com/37161577/40457980-cdecc1c6-5f3c-11e8-8777-7fc93067918a.png)
+9
 
 Additional users can always be added to the channel later.
 
@@ -147,7 +147,7 @@ That’s it NagBot should be ready to use.
 
 NagBot will send messages directly to a user:
 
-![10_nagbotmessage](https://user-images.githubusercontent.com/37161577/40458021-f5b0040c-5f3c-11e8-8a16-8db93458c128.png)
+10
 
 Respond directly to the user if all is OK
 
@@ -155,4 +155,4 @@ Or
 
 Escalate the event to admin or security personnel via the designated escalation channel.
 
-![11_securityalert](https://user-images.githubusercontent.com/37161577/40458033-07104de2-5f3d-11e8-84d3-52e3558a1c60.png)
+11
