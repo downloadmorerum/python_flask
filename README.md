@@ -1,6 +1,6 @@
-### Setting things up:
-### Deploy NagBot to a server or cloud service.
-## Heroku
+# Setting things up:
+## Deploy NagBot to a server or cloud service.
+### Heroku
 
 ### Create a NagBot Slack app on [api.slack.com](https://api.slack.com/apps?utm_source=events&utm_campaign=build-bot-workshop&utm_medium=workshop)
 
@@ -24,55 +24,59 @@ Turn on interactivity, then fill in the request URL and Options Load URL fields,
 
 ![4_turnon_interactivity](https://user-images.githubusercontent.com/37161577/40457895-5d1464a4-5f3c-11e8-8eca-5fb5711d572c.png)
 
-Don’t forget to save changes.
+**Don’t forget to save changes.**
 To make NagBot appear more like a standard user in your workspace you can set the Bot User details:
 
 ![5_botuser](https://user-images.githubusercontent.com/37161577/40457913-730dfafe-5f3c-11e8-92d2-8457b6362bc3.png)
 
-Don’t forget to save.
+**Don’t forget to save.**
 Security personnel will receive messages in the escalation channel from the bot as you have named it here.
 
 ### Tokens, Verification and Environmental variables
 
 So that Slack will accept message from your NagBot and can send messages back to Slack we need a:
-SLACK_BOT_TOKEN called the Bot User OAuth Token.
-SLACK_VERIFICATION_TOKEN conveniently enough call Verification Token.
+**SLACK_BOT_TOKEN** called the Bot User OAuth Token.
+**SLACK_VERIFICATION_TOKEN** conveniently enough call Verification Token.
 It is important that these tokens remain secret, do not share them. 
-To retrieve the SLACK_BOT_TOKEN 
+To retrieve the **SLACK_BOT_TOKEN** 
 Navigate to OAuth & Permissions in the left hand side menu:
 
 ![6_ oauth_token](https://user-images.githubusercontent.com/37161577/40457930-87768e84-5f3c-11e8-8aed-202c10e4ff4c.png)
 
  Copy this to like named environmental variables on the server hosting your NagBot App.
-$export SLACK_BOT_TOKEN=”xoxp-secret_token”
+`$export SLACK_BOT_TOKEN=”xoxp-secret_token”`
 
-To retrieve the SLACK_VERIFICATION_TOKEN
+To retrieve the **SLACK_VERIFICATION_TOKEN**
 Navigate to Basic Information in the left hand side menu:
 
 ![7_verification_token](https://user-images.githubusercontent.com/37161577/40457951-a346e7f8-5f3c-11e8-9821-383fbbc7d1f5.png)
 
  Copy this to like named environmental variables on the server hosting your NagBot App.
-$export SLACK_VERIFICATION_TOKEN =”another secret token”
+`$export SLACK_VERIFICATION_TOKEN =”another secret token”`
 
 ### Create a channel to receive escalation events
 
 Finally we need to create a Slack channel to which suspicious login events can be sent. Only administrative personnel and NagBot need access to this channel.
-Create a channel, using either Slack app or the Slack Web site, in the workspace you wish NagBot to be active click the + next to Channels 
+Create a channel, using either Slack app or the Slack Web site, in the workspace you wish NagBot to be active click the **+** next to Channels 
 
 ![8_addchannel](https://user-images.githubusercontent.com/37161577/40457970-bb8abbaa-5f3c-11e8-816f-138b9679a543.png)
 
-Fill in the displayed fields, change Public to Private if you want escalations to remain private, invite the users and NagBot, then Create Channel.
+Fill in the displayed fields:
+- change Public to Private if you want escalations to remain private.
+- invite the users and NagBot.
+- then Create Channel.
 
 ![9_escalatechannel](https://user-images.githubusercontent.com/37161577/40457980-cdecc1c6-5f3c-11e8-8777-7fc93067918a.png)
 
 Additional users can always be added to the channel later.
 
-So NagBot knows where to send the escalation message you need its channel id. The easiest way to find it is in the url field of your browser. Navigate to the slack channel and the channel id will appear after /message/####
-https://yourserver.com/messages/ABCDEFGHI/
+NagBot needs to know where to send the escalation message this is identified by the channel id. 
+The easiest way to find it is in the `url` field of your browser. Navigate to the slack channel and the channel id will appear after `/message/####`
+For example:
+`https://yourserver.com/messages/ABCDEFGHI/`
 
 Copy this to a NAGBOT_SLACK_CHANNEL environmental variable onto your server.
-
-$export NAGBOT_SLACK_CHANNEL=”ABCDEFGHI”
+`$export NAGBOT_SLACK_CHANNEL=”ABCDEFGHI”`
 
 ### Test it works.
 
@@ -80,7 +84,7 @@ To test it generate an alert from Elastalert or use curl to send Nagbot a json t
 For example:
 
 ## test_event.json
-{
+`{
  "system": {
   "auth": {
    "hostname": "yourhost",
@@ -119,10 +123,10 @@ For example:
   "module": "system",
   "name": "auth"
  }
-}
-
+}`
+From the command line use curl to send the json to NagBot
 ## Curl command:
-curl -XPOST --header "Content-Type: application/json" 'https://yourserver.nagbotapp.com/api/json/nagbot/' -d @test_event.json
+`curl -XPOST --header "Content-Type: application/json" 'https://yourserver.nagbotapp.com/api/json/nagbot/' -d @test_event.json`
 
 
 ### Good to go
